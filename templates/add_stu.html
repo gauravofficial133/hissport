@@ -1,0 +1,174 @@
+
+{% extends "adm_layout.html" %}
+
+{% block body %}
+
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 col-md-3 col-lg-3"></div>
+    <div class="col-sm-8 col-md-6 col-lg-6">
+      
+      <div class="card">
+        <div class="card-header bg-primary"> Add Student </div>
+        <div class="card-body">
+          <form method="POST" action="/add_stud/">
+            {% csrf_token %}
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Enter admno</span>
+              </div>
+              <input name="admno" id="admno" class="form-control" onblur="validateAdmno()" required>
+            </div>
+<br>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Enter Name</span>
+              </div>
+              <input type="text" name="sname" id="sname" class="form-control" onblur="validateName()" required>
+            </div>
+<br>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">DOB</span>
+              </div>
+              <input type="date" id="sdob" name="sdob" class="form-control" onblur="checkAgeGroup()" required>
+            </div>
+            <div>
+              <input type="hidden" id="ageGroup" name="ageGroup" class="form-control">
+            </div>
+<br>
+ 
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Class</span>
+              </div>
+              <Select name="sclass" class="custom-select form-control" id="sclass">
+                {% for i in selectclass %}
+                <option value="{{i}}">{{i}}</option>
+                {% endfor %}
+              </Select>
+            </div> <br>
+
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Section</span>
+              </div>
+              <Select name="ssec" class="custom-select form-control">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+              </select>
+            </div>
+<br>
+
+
+
+            <div class="form-check-inline">
+              <label class="form-check-label text-dark"> Male </label>
+              <input type="radio" name="gender" class="form-check-input" value="Male">
+            </div> 
+
+            <div class="form-check-inline">
+              <label class="form-check-label text-dark"> Female </label>
+              <input type="radio" name="gender" class="form-check-input" value="Female">
+            </div> <br><br>
+
+           <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">House</span>
+              </div>
+              <Select name="shouse" class="custom-select form-control" id="shouse">
+                <option value="Joy">Joy</option>
+                <option value="Love">Love</option>
+                <option value="Peace">Peace</option>
+                <option value="Truth">Truth</option>
+              </select>
+            </div>
+<br>
+
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Event1</span>
+              </div>
+              <select name="event1" class="custom-select form-control" id="event1">
+                <option>Select Event1</option>
+                {% for a in eventlst %}
+                <option value="{{a}}">{{a}}</option>
+                {% endfor %}
+              </select>
+            </div>
+<br>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Event2</span>
+              </div>
+              <select name="event2" class="custom-select form-control" id="event2">
+                <option>Select Event2</option>
+                {% for a in eventlst %}
+                <option value="{{a}}">{{a}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <h3 class="text-dark">{{cate}}</h3>
+            <input type="submit" class="btn btn-success">
+          </form>
+       </div>
+    <div class="col-sm-2 col-md-3 col-lg-3"></div>
+  </div>
+  
+</div>
+
+<script type="text/javascript">
+//   function validateAdmno()
+//   {
+//     var admsnNo = document.getElementById('admno').value;
+//     if(admsnNo.length<1) {
+//       alert('Enter required fields');
+//       return;
+//     }
+//     if(isNaN(admsnNo) || admsnNo.length<4 || admsnNo.length>6) {
+//       alert('Enter Admission No. in proper format');
+//       return;
+//     }
+// }
+
+// /function validateName() {
+//   var name = document.getElementById('sname').value;
+//   if(name=="") {
+//       alert('Enter required fields');
+//       return;
+//     }
+//     if(!isNaN(name)) {
+//       alert('Enter only characters in name');
+//       return;
+//     }
+// }
+
+function checkAgeGroup(){
+  var dob = new Date(document.getElementById('sdob').value);
+  if(dob > new Date('11-26-2009') && dob < new Date('11-25-2015')) {
+    document.getElementById('ageGroup').value = "U-9";
+  }
+  else if(dob > new Date('11-26-2003') && dob < new Date('11-25-2005')) {
+    document.getElementById('ageGroup').value = "U-16";
+  }
+  else if(dob > new Date('11-26-2005') && dob < new Date('11-25-2007')) {
+    document.getElementById('ageGroup').value = "U-14";
+  }
+  else if(dob > new Date('11-26-2007') && dob < new Date('11-25-2009')) {
+    document.getElementById('ageGroup').value = "U-11";
+  }
+  console.log(document.getElementById('ageGroup').value);
+}
+function checkgames(){
+  ev1 = document.getElementById('ageGroup').value
+  ev2=document.getElementById('ageGroup').value 
+}
+
+</script>
+
+
+
+{% endblock %}

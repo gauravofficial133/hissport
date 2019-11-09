@@ -1,0 +1,38 @@
+{% extends "adm_layout.html" %}
+
+{% block body %}
+
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 col-md-3 col-lg-4"></div>
+    <div class="col-sm-8 col-md-6 col-lg-4">
+      
+      <div class="card" background="transparent">
+        <div class="card-header bg-primary"> Update Event details </div>
+        <div class="card-body">
+          <form method="POST" action="/up_event/">
+            {% csrf_token %}
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Select Game</span>
+              </div>
+              <Select name="upevent" class="custom-select form-control" required>
+                {% for a in prestat%}
+                <option value="{{a}}">{{a}}</option>
+                {% endfor %}
+              </Select>
+            </div><br>
+            <input type="submit">
+          </form>
+       </div>
+     </div>
+   </div>
+    <div class="col-sm-2 col-md-3 col-lg-4"></div>
+  </div>
+  <br><br><br>
+</div>
+
+
+
+{% endblock %}

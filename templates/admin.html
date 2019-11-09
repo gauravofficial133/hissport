@@ -1,0 +1,48 @@
+{% extends "adm_layout.html" %}
+
+{% block body %}
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 col-md-3 col-lg-2"></div>
+    <div class="col-sm-8 col-md-6 col-lg-8">
+      
+      <div class="card">
+        <div class="card-header bg-primary text-center"> TOP PERFORMERS </div>
+        <div class="card-body bg-dark">
+
+          <table class="table table-dark table-hover">
+            <thead>
+
+              <th>Student's name</th>
+              <th>Class</th>
+              <th>Section</th>
+              <th>Category</th>
+              <th>House</th>
+              <th>Total points</th>
+            </thead>
+
+            <tbody>
+              {% for x in top%}
+              <tr>
+                <td>{{x.0}}</td>
+                <td> {{x.1}} </td>
+                <td> {{x.2}} </td>
+                <td>{{x.3}}</td>
+                <td> {{x.4}} </td>
+                <td> {{x.5}} </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+
+          </div>
+  </div>
+</div>
+    <div class="col-sm-2 col-md-3 col-lg-2"></div>
+  </div>
+  <br><br>
+</div>
+
+{% endblock %}

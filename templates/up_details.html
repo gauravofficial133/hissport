@@ -1,0 +1,108 @@
+
+{% extends "adm_layout.html" %}
+{% block body %}
+
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 col-md-3 col-lg-4"></div>
+    <div class="col-sm-8 col-md-6 col-lg-4">
+      
+      <div class="card">
+        <div class="card-header bg-primary"> Update Student </div>
+        <div class="card-body">
+          {% for predet in predet %}
+          <form method="POST" action="/up_details/">
+            {% csrf_token %}
+            
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Enter admno</span>
+              </div>
+              
+              <input name="admno" id="admno" class="form-control" value="{{predet.admno}}" readonly>
+              
+            </div>
+          
+<br>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Enter Name</span>
+              </div>
+              <input type="text" name="sname" id="sname" class="form-control" value="{{predet.sname}}">
+            </div>
+<br>
+
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">House</span>
+              </div>
+
+              <Select name="shouse" class="custom-select form-control">
+                <option value="{{predet.house}}" selected>{{predet.house}}</option>
+                <option value="joy">Joy</option>
+                <option value="love">Love</option>
+                <option value="peace">Peace</option>
+                <option value="truth">Truth</option>
+              </select>
+            </div>
+<br>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Class</span>
+              </div>
+              <Select name="sclass" class="custom-select form-control">
+                <option value="{{predet.sclass}}">{{predet.sclass}}</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </Select>
+            </div>            
+<br>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Event1</span>
+              </div>
+              <select name="event1" class="custom-select form-control">
+                <option value="{{predet.event1}}" selected>{{predet.event1}}</option>
+                <option value="60m">60m</option>
+                <option value="100m">100m</option>
+                <option value="200m">200m</option>
+                <option value="400m">400m</option>
+                <option value="discuss throw">discuss throw</option>
+                <option value="long jump">long jump</option>
+                <option value="relay(4x100)">relay(4x100)</option>
+              </select>
+            </div>
+<br>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Event2</span>
+              </div>
+              <select name="event2" class="custom-select form-control">
+                <option value="{{predet.event2}}" selected>{{predet.event2}}</option>
+                <option value="60m">60m</option>
+                <option value="100m">100m</option>
+                <option value="200m">200m</option>
+                <option value="400m">400m</option>
+                <option value="discuss throw">discuss throw</option>
+                <option value="long jump">long jump</option>
+                <option value="relay(4x100)">relay(4x100)</option>
+              </select>
+            </div>
+            {% endfor %}
+            <br>
+            <input type="submit">
+          </form>
+
+       </div>
+    <div class="col-sm-2 col-md-3 col-lg-4"></div>
+  </div>
+</div>
+
+
+{% endblock %}

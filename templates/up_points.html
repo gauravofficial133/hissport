@@ -1,0 +1,76 @@
+{% extends "adm_layout.html" %}
+
+{% block body %}
+
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 col-md-3 col-lg-4"></div>
+    <div class="col-sm-8 col-md-6 col-lg-4">
+      
+      <div class="card">
+        <div class="card-header bg-primary"> Update points </div>
+        <div class="card-body">
+          <form method="POST" action="/up_points/">
+            {% csrf_token %}
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Enter Admno</span>
+              </div>
+              <input type="text" name="padmno" required style="padding: 1.5%">
+            </div>
+<br>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Select game</span>
+              </div>
+              <Select name="pgame" class="custom-select form-control" onchange=checkPGroup() id="pgame" required>
+                {% for z in peventlst%}
+                <option value="{{z}}">{{z}}</option>
+                {% endfor %}
+              </Select>
+            </div>
+<br>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Select Position</span>
+              </div>
+              <Select name="nrmlp" class="custom-select form-control" id="nrmlp" style="display: none">
+                <option value="3">Gold</option>
+                <option value="2">Silver</option>
+                <option value="1">Bronze</option>
+              </Select>
+
+              <Select name="relayp" class="custom-select form-control" id="relayp" style="display: none">
+                <option value="20">1st</option>
+                <option value="15">2nd</option>
+                <option value="10">3rd</option>
+                <option value="5">4th</option>
+              </Select>
+            </div>
+             <h3 class="text-dark">{{medals}}</h3>
+             <br>
+            <input type="submit">
+          </form>
+
+       </div>
+    <div class="col-sm-2 col-md-3 col-lg-4"></div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  function checkPGroup(){
+  var gtype = document.getElementById('pgame').value;
+  if(gtype == "relay(4x100)") {
+    document.getElementById('nrmlp').style.display ='none';
+    document.getElementById('relayp').style.display ='block';
+  }
+  else  {
+    document.getElementById('relayp').style.display ='none';
+    document.getElementById('nrmlp').style.display ='block';
+  }
+
+}
+</script>
+{% endblock %}

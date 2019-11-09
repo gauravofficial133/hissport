@@ -1,0 +1,20 @@
+relay(4x100)
+discuss throw
+shotput
+long jump
+400m
+200m
+100m
+60m
+
+
+#DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'atheletic',
+        'USER': 'root',
+        'PASSWORD': "",
+        'HOST':"",
+        'PORT':"3306",
+    }
+}

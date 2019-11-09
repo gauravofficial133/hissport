@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+	<div class="container-fluid">
+<br>
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12" align="center" style="font-size:20px;"> <h3>WELCOME TO INTERHOUSE ATHELETICS MEET </h3></div>
+
+			<h2 class="text-white" align="right"></h2>
+			
+	    </div><br>
+
+
+
+		<div class="row">
+
+
+
+			<div class="col-sm-1 col-md-3 col-lg-2">
+				<style type="text/css">.ncard{height: 100px}</style>
+				<div class="card">
+					<div class="card-header bg-primary text-white text-center">Upcoming events</div>
+					<div class="card-body bg-dark">
+						{% for a in upcoming %}
+						{{a}}<br>
+						{% endfor %}
+					</div>
+				</div>
+
+
+
+
+
+
+			</div>
+
+
+
+
+
+			<div class="col-sm-10 col-md-6 col-lg-8">
+
+				<div class="card">
+			    <div class="card-header bg-primary text-white text-center">Points table</div>
+				<div class="card-body bg-dark">
+					<table class="table table-dark table-hover">
+						<thead>
+							<th>House</th>
+							<th>Gold</th>
+							<th>Silver</th>
+							<th>Bronze</th>
+							<th>Total points</th>
+						</thead>
+
+						<tbody>
+							{% for c in pt %}
+							<tr>
+								<td>{{c.0}}</td>
+								<td> {{c.1}} </td>
+								<td>{{c.2}}</td>
+								<td> {{c.3}} </td>
+								<td>{{c.4}}</td>
+							</tr>
+							{% endfor %}
+
+						</tbody>
+					</table>
+
+
+			    </div>
+			    </div>
+
+
+			</div>
+
+
+
+
+			<div class="col-sm-1 col-md-3 col-lg-2">
+		
+
+				<div class="card">
+					<div class="card-header bg-primary text-white text-center">Completed events</div>
+					<div class="card-body bg-dark">
+						{% for b in completed %}
+						{{b}}<br>
+						{% endfor %}
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+<br><br>
+
+<h3 class="text-white"><br></h3>
+
+	</div>
+{% endblock %}
